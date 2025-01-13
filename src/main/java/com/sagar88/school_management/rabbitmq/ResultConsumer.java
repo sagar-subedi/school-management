@@ -14,9 +14,8 @@ public class ResultConsumer {
 
     @RabbitListener(queues = "result-queue")
     public void consumeMessage(String message) {
-        // Extract email and result details from the message (placeholder logic)
-        String studentEmail = extractEmailFromMessage(message); // Implement this
-        String resultDetails = extractResultDetailsFromMessage(message); // Implement this
+        String studentEmail = extractEmailFromMessage(message);
+        String resultDetails = extractResultDetailsFromMessage(message);
 
         emailService.sendEmail(
                 studentEmail,
@@ -26,11 +25,11 @@ public class ResultConsumer {
     }
 
     private String extractEmailFromMessage(String message) {
-        return "sagarxic@gmail.com";
+        return message.split("\\|")[0];
     }
 
     private String extractResultDetailsFromMessage(String message) {
-        return "Math: 95, Science: 89";
+        return message.split("\\|")[1];
     }
 }
 

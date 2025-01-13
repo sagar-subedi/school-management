@@ -46,7 +46,7 @@ public class ResultService {
     public void publishResult(Long examId){
         List<Result> results = resultRepository.findResultsByExamId(examId);
         for(Result result: results){
-            String message = MessageFormat.format( "sagarsubedi01@gmail.com|result|Dear Student, Your marks for {0} exam of {1} is {2} out of {3}. \n Thanks.",result.getExam().getTerm(), result.getExam().getClassEntity().getSubject(), result.getMarks(), result.getExam().getFullMarks());
+            String message = MessageFormat.format( "{4}|result|Dear Student, Your marks for {0} exam of {1} is {2} out of {3}. \n Thanks.",result.getExam().getTerm(), result.getExam().getClassEntity().getSubject(), result.getMarks(), result.getExam().getFullMarks(), result.getStudent().getUser().getEmail());
             resultPublisher.publishResult(message);
         }
     }
