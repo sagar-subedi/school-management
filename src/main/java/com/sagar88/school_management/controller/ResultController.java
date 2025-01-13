@@ -20,11 +20,6 @@ public class ResultController {
     @Autowired
     private ResultService resultService;
 
-    /**
-     * Add a new result.
-     * @param result The result object to be added.
-     * @return The created result.
-     */
     @PostMapping
     public ResponseEntity<Result> addResult(@RequestParam Long studentId, @RequestParam Long examId, @RequestParam Integer marks ) {
         Result createdResult = resultService.addResult(studentId, examId, marks);
@@ -50,23 +45,13 @@ public class ResultController {
     }
 
 
-    /**
-     * Get results by exam ID.
-     * @param examId The ID of the exam.
-     * @return List of results for the given exam.
-     */
     @GetMapping("/exam/{examId}")
     public ResponseEntity<List<Result>> getResultsByExam(@PathVariable Long examId) {
         List<Result> results = resultService.getResultsByExam(examId);
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
-    /**
-     * Get results by student ID and exam ID.
-     * @param studentId The ID of the student.
-     * @param examId The ID of the exam.
-     * @return List of results for the given student and exam.
-     */
+
     @GetMapping("/student/{studentId}/exam/{examId}")
     public ResponseEntity<List<Result>> getResultsByStudentAndExam(
             @PathVariable Long studentId,
@@ -75,11 +60,6 @@ public class ResultController {
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 
-    /**
-     * Delete a result by ID.
-     * @param resultId The ID of the result to delete.
-     * @return HTTP status indicating the outcome.
-     */
     @DeleteMapping("/{resultId}")
     public ResponseEntity<Void> deleteResult(@PathVariable Long resultId) {
         resultService.deleteResult(resultId);

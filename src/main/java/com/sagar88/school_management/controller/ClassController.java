@@ -23,18 +23,6 @@ public class ClassController {
         return new ResponseEntity<>(createdClass, HttpStatus.CREATED);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Class>> getAllClasses() {
-//        List<Class> classes = classService.g();
-//        return new ResponseEntity<>(classes, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Class> getClassById(@PathVariable Long id) {
-//        Class Class = classService.ge(id);
-//        return new ResponseEntity<>(Class, HttpStatus.OK);
-//    }
-
     @GetMapping("/standard/{standard}")
     public ResponseEntity<List<Class>> getClassesByStandard(@PathVariable String standard) {
         List<Class> classes = classService.getClassesByStandard(standard);

@@ -21,17 +21,5 @@ public class ExamController {
         Exam createdExam = examService.createExam(exam);
         return new ResponseEntity<>(createdExam, HttpStatus.CREATED);
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<Exam>> getAllExams() {
-//        List<Exam> exams = examService.ge();
-//        return new ResponseEntity<>(exams, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Exam> getExamById(@PathVariable Long id) {
-//        Exam exam = examService.ge(id);
-//        return new ResponseEntity<>(exam, HttpStatus.OK);
-//    }
 }
 
