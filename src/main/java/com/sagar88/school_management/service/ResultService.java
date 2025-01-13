@@ -43,13 +43,12 @@ public class ResultService {
         return resultRepository.save(result);
     }
 
-    public boolean publishResult(Long examId){
+    public void publishResult(Long examId){
         List<Result> results = resultRepository.findResultsByExamId(examId);
         for(Result result: results){
             String message = MessageFormat.format( "sagarsubedi01@gmail.com|result|Dear Student, Your marks for {0} exam of {1} is {2} out of {3}. \n Thanks.",result.getExam().getTerm(), result.getExam().getClassEntity().getSubject(), result.getMarks(), result.getExam().getFullMarks());
             resultPublisher.publishResult(message);
         }
-        return true;
     }
 
     @Transactional
