@@ -45,6 +45,7 @@ public class WebSecurityConfig {
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/test/**").permitAll()
+                                .requestMatchers("/department/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
